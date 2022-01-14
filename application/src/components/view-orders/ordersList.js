@@ -8,8 +8,11 @@ const OrdersList = (props) => {
         </div>
     );
 
+    console.log(orders[0].createdAt);
+
     return orders.map(order => {
         const createdDate = new Date(order.createdAt);
+
         return (
             <div className="row view-order-container" key={order._id}>
                 <div className="col-md-4 view-order-left-col p-3">
@@ -17,7 +20,7 @@ const OrdersList = (props) => {
                     <p>Ordered by: {order.ordered_by || ''}</p>
                 </div>
                 <div className="col-md-4 d-flex view-order-middle-col">
-                    <p>Order placed at {`${createdDate.getHours()}:${createdDate.getMinutes()}:${createdDate.getSeconds()}`}</p>
+                    <p>Order placed at {`${createdDate.toLocaleTimeString()}`}</p>
                     <p>Quantity: {order.quantity}</p>
                 </div>
                 <div className="col-md-4 view-order-right-col">
