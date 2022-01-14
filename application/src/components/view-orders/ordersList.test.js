@@ -55,4 +55,21 @@ describe('Orders List', () => {
         expect(screen.getByText(/^.*888.*$/gm)).toBeInTheDocument();
 
     });
+
+    test('renders correct time formatting', () => {
+        const orders = [
+            {
+                order_item: "Food",
+                quantity: "777",
+                _id: 1,
+                createdAt: new Date(2022, 11, 24, 15, 4, 3, 0)
+            }
+        ];
+        render(
+            <OrdersList
+                orders={orders}
+            />
+        )
+        expect(screen.getByText(/3:04:03/g)).toBeInTheDocument();
+    });
 })
